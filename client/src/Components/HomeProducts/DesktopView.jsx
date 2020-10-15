@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const DesktopView = () => {
   const [products, setProducts] = useState("");
   const url = "/api/home-products";
+  const [mounted, setMounted] = useState(true)
 
   useEffect(() => {
     const pusher = new Pusher("ddf33ffd13aea6ae2d69", {
@@ -30,16 +31,21 @@ const DesktopView = () => {
     };
   }, [products]);
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        setProducts(response.data[0]);
-      })
-      .catch((error) => {
-        return console.log(error);
-      });
-  }, []);
+   
+    const loadData = async()=>{
+      const {data} = await axios.get(url)
 
+      if (mounted){
+        setProducts(data[0])
+      }
+    }
+    loadData()
+    return ()=>{
+      setMounted(false)
+    }
+
+  }, [mounted]);
+  console.log(products);
   return (
     <div className="HomeProducts__container">
       {products && (
