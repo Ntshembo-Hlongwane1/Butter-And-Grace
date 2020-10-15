@@ -1,0 +1,45 @@
+.AllProducts__container {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.Allproducts__container {
+  margin-top: 3em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Router__link > img {
+  width: 90%;
+  margin-bottom: 1.5em;
+  transition: transform 0.4s;
+}
+
+.Router__link > img:hover {
+  transform: scale(1.2);
+}
+
+.all_products {
+  width: 20%;
+}
+
+.AllProducts__container > h3 {
+  font-size: 2rem;
+}
+
+@media screen and (max-width:1000px){
+
+  .Allproducts__container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Router__link > img{
+    width: 100%;
+  }
+  .all_products {
+    width: 70%;
+  }
+
+}
