@@ -45,7 +45,7 @@ const DesktopView = () => {
     }
 
   }, [mounted]);
-  console.log(products);
+
   return (
     <div className="HomeProducts__container">
       {products && (

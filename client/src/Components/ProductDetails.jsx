@@ -21,7 +21,7 @@ const ProductDetails = () => {
       setMounted(false);
     };
   }, [mounted, url]);
-  console.log(product);
+  
   return (
     <div className="ProductDetails__container">
       <div className="Details__container">

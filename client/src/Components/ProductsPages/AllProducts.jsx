@@ -22,7 +22,7 @@ const AllProducts = () => {
     }
 
   }, [mounted]);
-  console.log(products);
+
   return (
     <div className="All__availProductsContainer">
       {products && <div className="AllProducts__container">
