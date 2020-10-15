@@ -20,7 +20,7 @@ const AllProducts = () => {
 
   return (
     <div className="All__availProductsContainer">
-      {status && status === 500 && products && products === "" ? (
+      {status && status === 500 ? (
         <h1>Server is currently down :(</h1>
       ) : (
         products && (

@@ -41,7 +41,7 @@ db.once("open", () => {
     console.log(change);
     if (change.operationType === "update") {
       const homeContent = images;
-      return pusher.trigger("homeContent", "updated", {
+      pusher.trigger("homeContent", "updated", {
         images: images ? images : null,
         header: header ? header : null,
       });
@@ -71,10 +71,12 @@ router.post("/api/home-sliders-top", (request, response) => {
     const { image } = files;
 
     let existingContent = await topHomeProductModel.findOne();
+    console.log("Header Text: ", headerText);
+
     try {
       if (!image) {
         existingContent.header = headerText;
-
+        console.log("Header Text Getting Updated: ");
         const newDoc = await topHomeProductModel.findOneAndUpdate(
           { _id: existingContent._id },
           existingContent,
@@ -85,6 +87,7 @@ router.post("/api/home-sliders-top", (request, response) => {
 
         return response.status(201).json(newDoc);
       }
+      console.log("IMAGE UPDATE");
       cloudinary.uploader.upload(
         image.path,
         { folder: "/ButterScotch(AgreenethOnline)/" },

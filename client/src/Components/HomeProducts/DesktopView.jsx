@@ -38,10 +38,6 @@ const DesktopView = () => {
       .catch((error) => {
         return console.log(error);
       });
-
-    return () => {
-      console.log("Fetch successful");
-    };
   }, []);
 
   return (
