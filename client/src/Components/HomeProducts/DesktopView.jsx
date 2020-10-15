@@ -7,8 +7,8 @@ import Pusher from "pusher-js";
 import { Link } from "react-router-dom";
 const DesktopView = () => {
   const [products, setProducts] = useState("");
-  const url = "/api/home-products";
-  const [mounted, setMounted] = useState(true)
+  const url = `/api/home-products`;
+  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
     const pusher = new Pusher("ddf33ffd13aea6ae2d69", {
@@ -31,19 +31,17 @@ const DesktopView = () => {
     };
   }, [products]);
   useEffect(() => {
-   
-    const loadData = async()=>{
-      const {data} = await axios.get(url)
+    const loadData = async () => {
+      const { data } = await axios.get(url);
 
-      if (mounted){
-        setProducts(data[0])
+      if (mounted) {
+        setProducts(data[0]);
       }
-    }
-    loadData()
-    return ()=>{
-      setMounted(false)
-    }
-
+    };
+    loadData();
+    return () => {
+      setMounted(false);
+    };
   }, [mounted]);
 
   return (
