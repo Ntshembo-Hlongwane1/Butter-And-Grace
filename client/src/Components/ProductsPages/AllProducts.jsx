@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "../../axios.js";
+import axios from "axios";
 import "../../StyleSheet/AllProducts.css";
 import { Link } from "react-router-dom";
 const AllProducts = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../axios";
+import axios from "axios";
 import "../StyleSheet/ProductDetails.css";
 const ProductDetails = () => {
   const product_id = window.location.href.split("/")[4];

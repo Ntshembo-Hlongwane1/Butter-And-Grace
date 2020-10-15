@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "../../axios.js";
+import axios from "axios";
 import "../../StyleSheet/HomeProducts.css";
 import Pusher from "pusher-js";
 import { Link } from "react-router-dom";
