@@ -1,12 +1,20 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto Condensed", sans-serif;
-
+  font-family: "Roboto", sans-serif;
 }
 
-.Router__link{
+.Router__link {
   text-decoration: none;
   color: black;
+}
+
+.form__error {
+  color: red;
+}
+
+.Store__inventory {
+  display: flex;
+  height: 110vh;
 }
 

@@ -1,0 +1,16 @@
+.SideBarLayout__container {
+  display: flex;
+  align-items: center;
+  margin-top: 3em;
+  color: #f5f5f5;
+  transition: transform 0.4s;
+}
+
+.Sidebar__text {
+  margin-left: 1em;
+}
+
+.SideBarLayout__container:hover {
+  background-color: black;
+  transform: scale(1.02);
+}

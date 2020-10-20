@@ -1,0 +1,33 @@
+.NewProduct__form {
+  flex: 0.8;
+  display: block;
+  
+}
+
+.AddProduct__form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: 15em;
+  margin-top: 1em;
+}
+
+
+.AddProduct__form > h3{
+    margin-bottom: 2em;
+}
+
+.AddProduct__form> input,
+.AddProduct__form>textarea{
+    margin-bottom: 1.5em;
+}
+
+.CancelButton{
+    margin-bottom: 2em;
+}
+
+.AddProduct__form > button{
+    background-color: black;
+    padding: .5em 2em;
+    color: white;
+}

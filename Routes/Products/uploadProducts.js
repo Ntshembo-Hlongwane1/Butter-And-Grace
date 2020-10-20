@@ -14,7 +14,7 @@ cloudinary.config({
 router.post("/api/add-new-product", (request, response) => {
   const form = new FOrmidbale.IncomingForm();
   form.parse(request, async (error, fields, files) => {
-    const { description, ingredients } = fields;
+    const { description, ingredients, price } = fields;
     const { image } = files;
 
     try {
@@ -28,6 +28,7 @@ router.post("/api/add-new-product", (request, response) => {
             description,
             ingredients,
             image: image_url,
+            price,
           });
 
           const savedProduct = await newProduct.save();
@@ -41,6 +42,23 @@ router.post("/api/add-new-product", (request, response) => {
       return response.status(500).json({ msg: "Server is currenty down :(" });
     }
   });
+});
+
+router.post("/api/delete-product/:id", async (request, response) => {
+  const product_id = request.params.id;
+
+  try {
+    await productModel.findOneAndDelete({ _id: product_id }).then((res) => {
+      return response.status(200).json({ msg: "Product Successfully deleted" });
+    });
+  } catch (error) {
+    return response
+      .status(500)
+      .json({
+        msg:
+          "Server is currently down please try again later or contact support team",
+      });
+  }
 });
 
 module.exports = router;

@@ -27,19 +27,37 @@
 .AllProducts__container > h3 {
   font-size: 2rem;
 }
+.Text > h3 {
+  font-size: 2rem;
+}
 
-@media screen and (max-width:1000px){
+.Text {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .Allproducts__container{
+.Store__buttonAdd {
+  background-color: black;
+  color: white;
+  padding: 0.5em 1em;
+}
+
+.Store__buttonRemove {
+  background-color: red;
+  color: white;
+  padding: 0.5em 1em;
+}
+
+@media screen and (max-width: 1000px) {
+  .Allproducts__container {
     display: flex;
     flex-direction: column;
   }
 
-  .Router__link > img{
+  .Router__link > img {
     width: 100%;
   }
   .all_products {
     width: 70%;
   }
-
 }

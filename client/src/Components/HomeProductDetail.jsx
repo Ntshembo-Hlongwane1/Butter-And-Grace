@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../StyleSheet/ProductDetails.css";
-const ProductDetails = () => {
+
+const HomeProductDetails = () => {
   const product_id = window.location.href.split("/")[4];
-  const url = `/api/product-detail/${product_id}`;
+
+  const url = `/api/home-detail/${product_id}`;
   const [product, setProduct] = useState("");
 
   const [Qty, setQty] = useState("");
@@ -11,9 +13,9 @@ const ProductDetails = () => {
   useEffect(() => {
     const loadData = async () => {
       const { data } = await axios.get(url);
-
+      console.log(data.images[0]);
       if (mounted) {
-        setProduct(data);
+        setProduct(data.images[0]);
       }
     };
     loadData();
@@ -37,7 +39,7 @@ const ProductDetails = () => {
         {product && (
           <div className="Details__rightContainer">
             <h3>PRODUCT SUMMARY</h3>
-            <h4>{`Price: ${product.price}.00`}</h4>
+            <h4>{`Price: R${product.price}.00`}</h4>
             Qty:
             <select value={Qty} onChange={(e) => setQty(e.target.value)}>
               <option>...</option>
@@ -57,4 +59,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default HomeProductDetails;

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const HomePageProductSchema = mongoose.Schema({
-  header: { type: String, required: true },
   images: { type: Array, required: true },
 });
 
