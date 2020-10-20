@@ -29,26 +29,6 @@ const pusher = new Pusher({
   useTLS: process.env.pusher_useTLS,
 });
 
-const db = mongoose.connection;
-
-// // db.once("open", () => {
-// //   console.log("Database is open");
-
-// //   const homepageContent = db.collection("tophomeproductmodels");
-// //   const changeStream = homepageContent.watch();
-
-// //   changeStream.on("change", (change) => {
-// //     const { images } = change.updateDescription.updatedFields;
-// //     if (change.operationType === "update") {
-// //       const homeContent = images;
-// //       pusher.trigger("homeContent", "updated", {
-// //         images: images,
-// //       });
-// //     } else {
-// //       console.log("Error in pusher trigger");
-// //     }
-// //   });
-// });
 
 //========================================================HomePage Routes===============================================
 router.get("/api/home-products", async (request, response) => {
@@ -62,50 +42,6 @@ router.get("/api/home-products", async (request, response) => {
   } catch (error) {
     return response.status(500).json({ msg: "Server is currently down" });
   }
-});
-
-router.post("/api/home-page-images/:id", async (request, response) => {
-  const form = new Formidable.IncomingForm();
-  form.parse(request, async (error, fields, files) => {
-    const { description, ingredients } = fields;
-    const { image } = files;
-
-    const document_id = request.params.id;
-
-    let document = await topHomeProductModel.findOne({ _id: document_id });
-    console.log("IMAGE", image);
-    document.images[0].ingredients = ingredients
-      ? ingredients
-      : document.images[0].ingredients;
-    document.images[0].description = description
-      ? description
-      : document.images[0].description;
-
-    if (image !== undefined) {
-      cloudinary.uploader.upload(
-        image.path,
-        { folder: "/ButterScotch(AgreenethOnline)/HomeProducts" },
-        (error, res) => {
-          if (error) {
-            return response.status(409).json({
-              msg: "Update could not be completed please try again later",
-            });
-          }
-
-          const image_url = res.secure_url;
-          document.images[0].image = image_url;
-        }
-      );
-    }
-    const upadatingDoc = await topHomeProductModel.findOneAndUpdate(
-      { _id: document_id },
-      document,
-      {
-        new: true,
-      }
-    );
-    return response.status(201).json({ msg: "Document successfully updated" });
-  });
 });
 
 router.post("/api/update-home-products/:id", (request, response) => {
@@ -148,22 +84,18 @@ router.post("/api/update-home-products/:id", (request, response) => {
                 .json({ msg: "Successfully update home products" });
             })
             .catch((error) => {
-              return response
-                .status(200)
-                .json({
-                  msg:
-                    "Network error failed to update home product please try again later or contact support team",
-                });
+              return response.status(200).json({
+                msg:
+                  "Network error failed to update home product please try again later or contact support team",
+              });
             });
         }
       );
     } catch (error) {
-      return response
-        .status(500)
-        .json({
-          msg:
-            "Server is currently down please try again later or contact support team",
-        });
+      return response.status(500).json({
+        msg:
+          "Server is currently down please try again later or contact support team",
+      });
     }
   });
 });

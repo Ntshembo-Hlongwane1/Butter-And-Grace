@@ -3,9 +3,9 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import InfoIcon from "@material-ui/icons/Info";
 import "../../StyleSheet/DesktopNav.css";
 import PersonIcon from "@material-ui/icons/Person";
-
 import Cookie from "js-cookie";
 import { Link, useHistory } from "react-router-dom";
+
 const DesktopNavBar = () => {
   const history = useHistory();
   const usid = Cookie.get("muxavi_");

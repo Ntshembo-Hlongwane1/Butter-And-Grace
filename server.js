@@ -32,13 +32,13 @@ const hompageContentRoute = require("./Routes/HomePage/homePage");
 const productUploadRoute = require("./Routes/Products/uploadProducts");
 const productFetchRoute = require("./Routes/Products/fetchProducts");
 const userAuthentication = require("./Routes/Auth/userAuth");
-const adminAuthRoute = require("./Routes/Auth/adminsAuth");
+const adminAuthRoutes = require("./Routes/Auth/adminsAuth");
 //========================================================ROUTE ENTRY POINTS============================================
 app.use(hompageContentRoute);
 app.use(productUploadRoute);
 app.use(productFetchRoute);
 app.use(userAuthentication);
-app.use(adminAuthRoute);
+app.use(adminAuthRoutes);
 //=========================================================PRODUCTION SETUP=============================================
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
