@@ -1,6 +1,12 @@
 const router = require("express").Router();
-const { topHomeProductModel } = require("../../Models/HomePage/Slider_and_sliderHeading");
+const {
+  topHomeProductModel,
+} = require("../../Models/HomePage/Slider_and_sliderHeading");
 const { productModel } = require("../../Models/Products/Products");
+
+
+
+
 
 //========================================================PRODUCT FETCH ROUTE===========================================
 router.get("/api/all-products", async (request, response) => {
@@ -9,7 +15,10 @@ router.get("/api/all-products", async (request, response) => {
       .find()
       .exec()
       .then((data) => {
-        return response.status(200).json(data);
+        return response.status(200).json(data);    
+      })
+      .catch((error) => {
+        console.log(error);
       });
   } catch (error) {
     return response.status(500).json({ msg: "Server is currently down :(" });
@@ -35,7 +44,6 @@ router.get("/api/home-detail/:id", async (request, response) => {
       .findOne({ _id: request.params.id })
       .exec()
       .then((data) => {
-       
         return response.status(200).json(data);
       });
   } catch (error) {

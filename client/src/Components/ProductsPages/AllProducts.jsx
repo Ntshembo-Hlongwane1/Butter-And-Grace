@@ -20,7 +20,7 @@ const AllProducts = () => {
       setMounted(false);
     };
   }, [mounted]);
-
+  console.log(products);
   return (
     <div className="All__availProductsContainer">
       {products && (
